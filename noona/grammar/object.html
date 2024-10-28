@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+
+<body>
+
+    <script>
+        let patient = {
+            name: "phwworld",
+            age: 20,
+            disease: "cold"
+        }
+
+        console.log(patient.name);
+        console.log(patient["age"]);
+        patient.name = "legend";
+        console.log(patient.name);
+
+        let patientList = [
+            {
+                name: "a",
+                age: 20
+            }, {
+                name: "b",
+                age: 21
+            }, {
+                name: "c",
+                age: 22
+            }
+        ]
+
+        console.log(patientList);
+        console.log(patientList[0]);
+        console.log(patientList[0].name);
+        console.log(patientList[0]["age"]);
+    </script>
+</body>
+
+</html>

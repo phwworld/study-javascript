@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.weatherBox {
+  width: 450px;
+  padding: 20px 10px;
+  border: 5px solid black;
+  border-radius: 20px;
+  text-align: center;
+}

@@ -1,0 +1,21 @@
+.wrap {
+  width: 960px;
+  margin: 0 auto;
+}
+.newsItem a {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid black;
+}
+.newsItem p {
+  flex-basis: 20%;
+}
+.newsItem p img {
+  width: 150px;
+}
+.newsItem div {
+  flex-basis: 80%;
+}
+.pagination button.act {
+  background: red;
+}

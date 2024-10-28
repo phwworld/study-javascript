@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            padding: 10px;
+            border: 1px solid skyblue;
+        }
+
+        div+div {
+            margin-top: 10px;
+        }
+
+        .arrayCheck {
+            display: flex;
+        }
+
+        .arrayCheck p+p {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="arrayCheck">
+        <p>배열 : </p>
+        <p class="arrayList"></p>
+    </div>
+
+    <div class="arrayPop">
+        <span>마지막 삭제(pop)</span>
+        <button type="button">pop</button>
+    </div>
+
+    <div class="arrayPush">
+        <span>마지막 추가(push)</span>
+        <input type="text">
+        <button type="button">push</button>
+    </div>
+
+    <div class="arrayIncludes">
+        <span>아이템 포함여부(includes)</span>
+        <input type="text">
+        <button type="button">includes</button>
+        <p>결과 : <span></span></p>
+    </div>
+
+    <div class="arrayIndexof">
+        <span>아이템 인덱스(indexOf)</span>
+        <input type="text">
+        <button type="button">indexOf</button>
+        <p>결과 : <span></span></p>
+    </div>
+
+    <div class="arrayLength">
+        <button type="button">length</button>
+        <p>결과 : <span></span></p>
+    </div>
+
+    <script>
+        let array = ["apple", "banana", "mango"];
+        let arrayPop = document.querySelector(".arrayPop button");
+        let arrayPush = document.querySelector(".arrayPush button");
+        let arrayIncludes = document.querySelector(".arrayIncludes button");
+        let arrayIndexof = document.querySelector(".arrayIndexof button");
+        let arrayLength = document.querySelector(".arrayLength button");
+
+        window.addEventListener("load", () => {
+            render();
+        });
+
+        arrayPop.addEventListener("click", () => {
+            array.pop();
+            render();
+        });
+
+        arrayPush.addEventListener("click", () => {
+            let pushItem = document.querySelector(".arrayPush input").value;
+            array.push(pushItem);
+            render();
+        });
+
+        arrayIncludes.addEventListener("click", () => {
+            let checkItem = document.querySelector(".arrayIncludes input").value;
+            let checkResult = document.querySelector(".arrayIncludes p span");
+            if (array.includes(checkItem)) {
+                checkResult.innerHTML = "true"
+            } else {
+                checkResult.innerHTML = "false"
+            }
+        });
+
+        arrayIndexof.addEventListener("click", () => {
+            let checkItem = document.querySelector(".arrayIndexof input").value;
+            let checkResult = document.querySelector(".arrayIndexof p span");
+            let itemIndex = array.indexOf(checkItem);
+            checkResult.innerHTML = itemIndex;
+        });
+
+        arrayLength.addEventListener("click", () => {
+            let checkResult = document.querySelector(".arrayLength p span");
+            let checkLength = array.length;
+            checkResult.innerHTML = checkLength;
+        });
+
+        const render = () => {
+            let resultHtml = '';
+            const renderTarget = document.querySelector(".arrayList");
+
+            // array.forEach((item) => {
+            //     resultHtml += `<span>${item}</span> `
+            // });
+            
+            for (let item of array) {
+                resultHtml += `<span>${item}</span> `
+            }
+            renderTarget.innerHTML = resultHtml;
+        }
+
+        /**
+         * pop() : 배열 끝에있는 아이템을 제거, 그 아이템값을 리턴
+         * push(‘아이템’): 배열 끝에 아이템 추가, 배열의 최종 길이 리턴
+         * includes(‘아이템’): 배열에 아이템이 포함되어있으면 true리턴 아니면 false 리턴
+         * indexOf(‘아이템’): 아이템의 인덱스 번호를 리턴
+         * slice(시작점, 끝점): 시작점~끝점(미포함) 까지 배열을 복사해서 리턴
+         * splice(시작점,개수): 시작점부터 개수만큼 실제 배열에서 아이템 제거
+         * length : 배열 함수는 아니지만 배열의 크기를 리턴해주는 속성 
+         */
+    </script>
+</body>
+
+</html>

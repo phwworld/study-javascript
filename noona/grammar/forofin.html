@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for in / of</title>
+</head>
+
+<body>
+
+    <script>
+        let aa = ["a", "b", "c", "d"];
+        let person = {
+            name: "aa",
+            age: 20
+        }
+
+        // for of : array 순환에 많이 사용
+        for (let item of aa) {
+            console.log(item);
+        }
+
+        // for in : object key 값 확인에 많이 사용
+        for (let key in person) {
+            console.log(key);
+        }
+    </script>
+</body>
+
+</html>

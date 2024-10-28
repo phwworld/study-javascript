@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const apiKey = `b601dc8f4ca74300ae27c7d99e388c8d`;
+      let newsList = [];
+      let page = 1;
+      const pageSize = 10;
+
+      let getNews = () => {
+        let url = new URL(
+          `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${apiKey}`
+        );
+        url.searchParams.set("page", page);
+        url.searchParams.set("pageSize", pageSize);
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("오류");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            newsList = data.articles;
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+      };
+
+      getNews();
+    </script>
+  </body>
+</html>

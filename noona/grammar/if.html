@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="userInput">
+    <button type="button" class="numberCheck">확인</button>
+    <p class="result"></p>
+
+    <script src="./script.js"></script>
+    <script>
+        let userInput = document.querySelector(".userInput");
+        let numberCheck = document.querySelector(".numberCheck");
+        let result = document.querySelector(".result");
+
+        numberCheck.addEventListener('click', () => {
+            let userNumber = userInput.value;
+
+            // if (userNumber > 0) {
+            //     result.innerText = "양수 입니다.";
+            // } else if (userNumber < 0) {
+            //     result.innerText = "음수 입니다.";
+            // } else {
+            //     result.innerText = "'0' 입니다.";
+            // }
+
+            userNumber >= 0 ? result.innerText = "양수 입니다." : result.innerText = "음수 입니다."
+
+            userInput.value = '';
+        });
+    </script>
+</body>
+
+</html>

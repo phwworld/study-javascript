@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>javascript bord</h1>
+    </header>
+
+    <div class="contents">
+      <select onchange="listSizeChange(event)">
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+      <ul class="newsList"></ul>
+    </div>
+
+    <script src="board.js"></script>
+  </body>
+</html>
