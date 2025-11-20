@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>딸기</li>
+    <li>
+      <p class="me">바나나1</p>
+      <p>바나나2</p>
+      <p>바나나3</p>
+    </li>
+    <li>사과</li>
+  </ul>
+
+  <script>
+    const me = document.querySelector('.me');
+    const answer = me.parentNode.previousSibling;	// 부모노드->형제이전노드
+    const answer2 = me.parentElement.previousElementSibling;	// 부모요소->형제이전요소
+    const answer3 = me.parentNode.previousElementSibling;	// 부모노드->형제이전요소
+    const answer4 = me.parentElement.previousSibling;	// 부모요소->형제이전노드
+
+    console.log(answer, answer2, answer3, answer4);
+
+
+  </script>
+</body>
+
+</html>
