@@ -1,0 +1,14 @@
+const week = ['일', '월', '화', '수', '목', '금', '토'];
+const getDate = new Date();
+const currentYear = getDate.getFullYear();
+const currentMonth = getDate.getMonth() + 1;
+const currentDate = getDate.getDate();
+const currentDay = week[getDate.getDay()];
+const yeaerHtml = document.querySelector('.year');
+const monthHtml = document.querySelector('.month');
+const dateHtml = document.querySelector('.date');
+const dayHtml = document.querySelector('.day');
+yeaerHtml.innerHTML = currentYear;
+monthHtml.innerHTML = currentMonth;
+dateHtml.innerHTML = currentDate;
+dayHtml.innerHTML = currentDay;
