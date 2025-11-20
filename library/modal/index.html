@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            padding: 30px;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 100;
+
+            .modal-cont {
+                position: relative;
+                padding: 30px;
+                background: #fff;
+
+                .modalClose {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                }
+            }
+
+            :where(&, & > .modal-cont) {
+                display: none;
+            }
+            
+            &.act {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal-cont.act {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="modalOpen" data-modalname="modal1">modal1</button>
+    <button type="button" class="modalOpen" data-modalname="modal2">modal2</button>
+    <button type="button" class="modalOpen" data-modalname="modal3">modal3</button>
+
+    <div class="modal">
+        <div class="modal-cont modal1">
+            modal1 cont
+            <button type="button" class="modalClose">X</button>
+        </div>
+
+        <div class="modal-cont modal2">
+            modal2 cont
+            <button type="button" class="modalClose">X</button>
+        </div>
+
+        <div class="modal-cont modal3">
+            modal3 cont
+            <button type="button" class="modalClose">X</button>
+        </div>
+    </div>
+
+    <script>
+        // modal
+        const modal = () => {
+            const modalOpens = document.querySelectorAll('.modalOpen');
+            const modalPop = document.querySelector('.modal');
+            const modalCont = modalPop.querySelectorAll('.modal-cont');
+            const modalClose = document.querySelectorAll('.modalClose');
+
+            modalOpens.forEach((openBtn) => {
+                openBtn.addEventListener('click', (e) => {
+                    const modalName = e.target.dataset.modalname;
+                    modalPop.classList.add('act');
+                    modalPop.querySelector(`.${modalName}`).classList.add('act');
+                });
+            });
+
+            modalClose.forEach((closeBtn) => {
+                closeBtn.addEventListener('click', (e) => {
+                    const activeCont = e.target.closest('.modal-cont');
+                    modalPop.classList.remove('act');
+                    activeCont.classList.remove('act');
+                });
+            });
+
+            modalPop.addEventListener('click', (e) => {
+                e.target.classList.remove('act');
+                modalCont.forEach((element) => {
+                    element.classList.remove('act');
+                });
+            });
+        }
+
+        modal();
+    </script>
+</body>
+</html>

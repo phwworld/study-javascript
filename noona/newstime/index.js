@@ -14,56 +14,57 @@ menus.forEach((menu) =>
 
 searchBtn.addEventListener("click", () => getNewsByKeyword());
 
-let getNews = () => {
-  url.searchParams.set("page", page);
-  url.searchParams.set("pageSize", pageSize);
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("오류");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (data.articles.length === 0) {
-        document.querySelector(".pagiNation-wrap").style.display = "none";
-        throw new Error("검색된 내용이 없습니다.");
-      } else {
-        document.querySelector(".pagiNation-wrap").style.display = "block";
-        newsList = data.articles;
-        console.log(newsList);
-        totalResults = data.totalResults;
-        render();
-        paginationRender();
-      }
-    })
-    .catch((error) => {
-      errorRender(error.message);
-    });
-};
-
-// const getNews = async () => {
-//   try {
-//     url.searchParams.set("page", page);
-//     url.searchParams.set("pageSize", pageSize);
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     console.log(data);
-//     if (response.status == 200) {
-//       if (data.articles.length === 0) {
-//         throw new Error("검색된 내용이 없습니다.");
+// let getNews = () => {
+//   url.searchParams.set("page", page);
+//   url.searchParams.set("pageSize", pageSize);
+//   fetch(url)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("오류");
 //       }
-//       newsList = data.articles;
-//       totalResults = data.totalResults;
-//       render();
-//       paginationRender();
-//     } else {
-//       throw new Error(data.message);
-//     }
-//   } catch (error) {
-//     errorRender(error.message);
-//   }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       if (data.articles.length === 0) {
+//         document.querySelector(".pagiNation-wrap").style.display = "none";
+//         throw new Error("검색된 내용이 없습니다.");
+//       } else {
+//         document.querySelector(".pagiNation-wrap").style.display = "block";
+//         newsList = data.articles;
+//         console.log(newsList);
+//         totalResults = data.totalResults;
+//         render();
+//         paginationRender();
+//       }
+//     })
+//     .catch((error) => {
+//       errorRender(error.message);
+//     });
 // };
+
+const getNews = async () => {
+  try {
+    url.searchParams.set("page", page);
+    url.searchParams.set("pageSize", pageSize);
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    // console.log(typeof data.articles, Array.isArray(data.articles), data.articles);
+    if (response.status == 200) {
+      if (data.articles.length === 0) {
+        throw new Error("검색된 내용이 없습니다.");
+      }
+      newsList = data.articles;
+      totalResults = data.totalResults;
+      render();
+      paginationRender();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    errorRender(error.message);
+  }
+};
 
 const getLatestNews = () => {
   url = new URL(

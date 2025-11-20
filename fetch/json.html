@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json test</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .data-list {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="data-list">
+        <div class="item">
+            <p class="title"></p>
+            <p class="cont"></p>
+            <p class="author"></p>
+            <p class="date"></p>
+        </div>
+    </div>
+    
+    <script>
+        let newsList = [];
+        let noticeList = [];
+        
+        function render() {
+            const renderTarget = document.querySelector('.data-list');
+            
+            const renderHtml = newsList.map((item) =>  
+                `<div class="item">
+                    <p class="title">${item.title}</p>
+                    <p class="cont">${item.content}</p>
+                    <p class="author">${item.author}</p>
+                    <p class="date">${item.date}</p>
+                </div>`
+            ).join("");
+            
+            // const renderHtml = dataList.map(function(item) {
+            //     return `<div class="item">
+            //         <p class="title">${item.title}</p>
+            //         <p class="cont">${item.content}</p>
+            //         <p class="author">${item.author}</p>
+            //         <p class="date">${item.date}</p>
+            //     </div>`
+            // }).join("");
+            
+            renderTarget.innerHTML = renderHtml;
+        }
+        
+        // const getData = async () => {
+        //     let response = await fetch('./data.json');
+        //     let data = await response.json();
+        //     newsList = data.news;
+        //     render();
+        // }
+        
+        async function getData() {
+            let response = await fetch('./json/data.json');
+            let data = await response.json();
+            newsList = data.news;
+            noticeList = data.notice;
+            console.log(newsList, noticeList);
+            render();
+        }
+        
+        getData();
+    </script>
+</body>
+</html>
