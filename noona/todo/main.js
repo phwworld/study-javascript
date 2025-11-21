@@ -7,8 +7,23 @@ let taskInput = document.querySelector('.task-input');
 let addBtn = document.querySelector('.task-add');
 let renderArea = document.querySelector('.task');
 let tabBtn = document.querySelectorAll('.tab div');
-let taskList = [];
-let idNum = 0;
+let taskList = [
+    {
+        id: 0,
+        taskCont: 'list1',
+        isComplete: false
+
+    },
+    {
+        id: 1,
+        taskCont: 'list2',
+        isComplete: false
+
+    },
+];
+// console.log(taskList.length);
+
+let idNum = taskList.length;
 let filterVal = 'all';
 
 for (let i = 0; i < tabBtn.length; i++) {
@@ -70,7 +85,8 @@ let taskCheck = (id) => {
             break;
         }
     }
-    render();
+    filter();
+    // render();
     console.log(taskList);
 }
 
@@ -116,3 +132,4 @@ let render = () => {
 }
 
 addBtn.addEventListener('click', addTask);
+render();
