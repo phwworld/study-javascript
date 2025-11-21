@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .select-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .selected-option {
+      padding: 12px;
+      font-size: 16px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+  
+    .custom-options {
+      display: none;
+      position: absolute;
+      width: 100%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+  
+    .custom-options div {
+      padding: 12px;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+    }
+  
+    .custom-options div:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="select-container">
+    <div class="selected-option">옵션 선택</div>
+    <div class="custom-options">
+      <div data-value="1">옵션 1</div>
+      <div data-value="2">옵션 2</div>
+      <div data-value="3">옵션 3</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector(".selected-option").addEventListener("click", function () {
+      document.querySelector(".custom-options").style.display = "block";
+    });
+  
+    document.querySelectorAll(".custom-options div").forEach(option => {
+      option.addEventListener("click", function () {
+        document.querySelector(".selected-option").innerText = this.innerText;
+        document.querySelector(".custom-options").style.display = "none";
+      });
+    });
+  
+    document.addEventListener("click", function (e) {
+      if (!document.querySelector(".select-container").contains(e.target)) {
+        document.querySelector(".custom-options").style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

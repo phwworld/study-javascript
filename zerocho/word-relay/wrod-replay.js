@@ -24,11 +24,20 @@ const game = () => {
     turnIncrease();
   } else {
     alert("다시 입력하세요.");
+    input.value = ''
+    input.focus();
+    return false;
   }
   wordView.innerHTML = newWord;
   input.value = ''
   input.focus();
 
 }
+
+input.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') {
+    game();
+  }
+});
 
 button.addEventListener('click', game);
