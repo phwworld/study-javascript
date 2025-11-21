@@ -98,9 +98,7 @@
 
             modalPop.addEventListener('click', (e) => {
                 e.target.classList.remove('act');
-                modalCont.forEach((element) => {
-                    element.classList.remove('act');
-                });
+                modalCont.forEach(element => element.classList.remove('act'));
             });
         }
 
