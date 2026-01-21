@@ -17,6 +17,7 @@ searchBtn.addEventListener("click", () => getNewsByKeyword());
 let getNews = () => {
   url.searchParams.set("page", page);
   url.searchParams.set("pageSize", pageSize);
+  console.log(url);
   fetch(url)
     .then((response) => {
       if (!response.ok) {
