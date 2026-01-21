@@ -5,29 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {padding: 0;margin: 0;box-sizing: border-box;}
+    body {display: grid;grid-template-columns: 1fr;grid-template-rows: 1fr;min-height: 100vh;align-items: center;justify-items: center;}
+  </style>
 </head>
 
 <body>
-  <ul>
-    <li>딸기</li>
-    <li>
-      <p class="me">바나나1</p>
+  <ul class="parent">
+    <li class="previous-sibling">딸기</li>
+    <li class='me'>
+      <p class="first-child">바나나1</p>
       <p>바나나2</p>
-      <p>바나나3</p>
+      <p class="last-child">바나나3</p>
     </li>
-    <li>사과</li>
+    <li class="next-sibling">사과</li>
   </ul>
 
   <script>
-    const me = document.querySelector('.me');
-    const answer = me.parentNode.previousSibling;	// 부모노드->형제이전노드
-    const answer2 = me.parentElement.previousElementSibling;	// 부모요소->형제이전요소
-    const answer3 = me.parentNode.previousElementSibling;	// 부모노드->형제이전요소
-    const answer4 = me.parentElement.previousSibling;	// 부모요소->형제이전노드
+    const me = document.querySelector(".me");
+    const parent = me.parentElement;
+    const children = me.children;
+    const firstChild = me.firstElementChild;
+    const lastChild = me.lastElementChild;
+    const prevSibling = me.previousElementSibling;
+    const nextSibling = me.nextElementSibling;
 
-    console.log(answer, answer2, answer3, answer4);
-
-
+    console.log(me);
+    console.log(parent, parent.className, prevSibling.innerHTML);
+    console.log(children, children.length);
+    console.log(firstChild, firstChild.className, firstChild.innerHTML);
+    console.log(lastChild, lastChild.className, lastChild.innerHTML);
+    console.log(prevSibling, prevSibling.className, prevSibling.innerHTML);
+    console.log(nextSibling, nextSibling.className, nextSibling.innerHTML);
   </script>
 </body>
 
